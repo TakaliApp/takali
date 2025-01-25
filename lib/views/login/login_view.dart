@@ -3,7 +3,8 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:takali/helpers/extensions/media_query.dart';
 import 'package:takali/themes/colors.dart';
 import 'package:takali/themes/sizes.dart';
-import 'package:takali/helpers/extensions/theme.dart';
+import 'package:takali/themes/styles.dart';
+import 'package:takali/helpers/extensions/textstyle.dart';
 import 'package:takali/viewmodels/login_viewmodel.dart';
 import 'package:takali/views/base.view.dart';
 
@@ -30,18 +31,15 @@ class _LoginViewState extends State<LoginView> {
       builder: (context, model, _) => Scaffold(
         backgroundColor: const Color.fromARGB(255, 252, 240, 193),
         body: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: Spacing.medium),
+          padding: const EdgeInsets.symmetric(horizontal: Spacing.small),
           child: Column(
             children: [
               SizedBox(height: context.screenHeight * 0.1),
               // Titre
-              const Text(
+              Text(
                 'Clique.\nDiscute\nTrouve ta vibe',
                 textAlign: TextAlign.center,
-                style: TextStyle(
-                  fontFamily: 'Harmonique',
-                  fontWeight: FontWeight.w900,
-                  fontSize: FontSizes.displayLarge,
+                style: context.displayLarge.copyWith(
                   color: AppColors.secondary,
                   height: 1
                 ),
@@ -137,7 +135,7 @@ class _LoginViewState extends State<LoginView> {
                   onPressed: () => {},
                   child: Text(
                     'Continuer !',
-                    style: context.bodyLarge!.copyWith(
+                    style: context.bodyLarge.copyWith(
                       fontWeight: FontWeight.w500,
                       color: _phoneController.text.isEmpty ?
                         AppColors.secondaryDeep.withOpacity(0.5) : 
@@ -159,9 +157,9 @@ class _LoginViewState extends State<LoginView> {
                       children: [
                         TextSpan(
                           text: 'Conditions d\'utilisation',
-                          style: context.bodyMedium!.copyWith(
+                          style: context.bodyMedium.copyWith(
                             color: AppColors.secondary,
-                            fontWeight: FontWeight.w500,
+                            fontWeight: FontWeight.w600,
                             decoration: TextDecoration.underline,
                             decorationColor: AppColors.secondary,
                           ),
@@ -169,9 +167,9 @@ class _LoginViewState extends State<LoginView> {
                         const TextSpan(text: ' ainsi que notre '),
                         TextSpan(
                           text: 'Politique de confidentialité',
-                          style: context.bodyMedium!.copyWith(
+                          style: context.bodyMedium.copyWith(
                             color: AppColors.secondary,
-                            fontWeight: FontWeight.w500,
+                            fontWeight: FontWeight.w600,
                             decoration: TextDecoration.underline,
                             decorationColor: AppColors.secondary,
                           ),
@@ -188,22 +186,22 @@ class _LoginViewState extends State<LoginView> {
                       textAlign: TextAlign.center,
                       text: TextSpan(
                         text: 'Contactez ',
-                        style: context.bodyMedium!.copyWith(
+                        style: context.bodyMedium.copyWith(
                           color: AppColors.secondary,
                         ),
                         children: [
                           TextSpan(
                             text: 'help@takali.com',
-                            style: context.bodyMedium!.copyWith(
+                            style: context.bodyMedium.copyWith(
                               color: AppColors.secondary,
-                              fontWeight: FontWeight.w500,
+                              fontWeight: FontWeight.w600,
                               decoration: TextDecoration.underline,
                               decorationColor: AppColors.secondary,
                             ),
                           ),
                           TextSpan(
                             text: ' en cas de problème',
-                            style: context.bodyMedium!.copyWith(
+                            style: context.bodyMedium.copyWith(
                               color: AppColors.secondary,
                             ),
                           ),

@@ -10,6 +10,7 @@ class TextStyles {
   static TextStyle get displayLarge => const TextStyle(
         fontFamily: fontFamily,
         fontSize: FontSizes.displayLarge,
+        fontWeight: FontWeight.w900,
       );
   static TextStyle get displayMedium => const TextStyle(
         fontFamily: fontFamily,
