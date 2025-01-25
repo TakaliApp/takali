@@ -4,3 +4,10 @@ enum ViewModelState {
   busy,
   idle,
 }
+
+/// [LocalBoxes]
+/// enum used to manage local Storage boxes
+enum LocalBoxes {
+  settings,
+  profile,
+}
