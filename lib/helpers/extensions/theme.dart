@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 extension ThemeExt on BuildContext {
   ThemeData get theme => Theme.of(this);
 
-  // * (default) TextTheme
   TextStyle? get displayLarge => theme.textTheme.displayLarge;
   TextStyle? get displayMedium => theme.textTheme.displayMedium;
   TextStyle? get displaySmall => theme.textTheme.displaySmall;
