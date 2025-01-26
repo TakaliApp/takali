@@ -9,6 +9,7 @@ import 'package:takali/viewmodels/home_viewmodel.dart';
 import 'package:takali/viewmodels/login_viewmodel.dart';
 import 'package:takali/viewmodels/match_preferences_viewmodel.dart';
 import 'package:takali/viewmodels/otp_viewmodel.dart';
+import 'package:takali/viewmodels/referral_source_viewmodel.dart';
 import 'package:takali/viewmodels/user_infos_viewmodel.dart';
 
 GetIt locator = GetIt.instance;
@@ -43,6 +44,7 @@ void registerViewModels() {
   locator.registerFactory<UserInfoViewModel>(() => UserInfoViewModel());
   locator.registerFactory<MatchPreferencesViewModel>(() => MatchPreferencesViewModel());
   locator.registerFactory<HomeViewModel>(() => HomeViewModel());
+  locator.registerFactory<ReferralSourceViewModel>(() => ReferralSourceViewModel());
 }
 
 void registerProviders() {

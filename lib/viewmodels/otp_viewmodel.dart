@@ -70,11 +70,11 @@ class OtpViewModel extends BaseViewModel {
       final userCredential = await _auth.signInWithCredential(credential);
       
       if (userCredential.user != null && context.mounted) {
-        if (userCredential.additionalUserInfo?.isNewUser ?? false) {
+        // if (userCredential.additionalUserInfo?.isNewUser ?? false) {
           Navigator.pushNamed(context, RoutePaths.profile);
-        } else {
+        /*} else {
           Navigator.pushReplacementNamed(context, RoutePaths.home);
-        }
+        }*/
       }
       _resetOtpFields();
     } on FirebaseAuthException catch (e) {

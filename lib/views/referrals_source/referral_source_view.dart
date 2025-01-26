@@ -3,6 +3,8 @@ import 'package:takali/constants/routes.dart';
 import 'package:takali/themes/colors.dart';
 import 'package:takali/helpers/extensions/textstyle.dart';
 import 'package:takali/helpers/extensions/media_query.dart';
+import 'package:takali/viewmodels/referral_source_viewmodel.dart';
+import 'package:takali/views/base.view.dart';
 
 class ReferralSourceView extends StatefulWidget {
   const ReferralSourceView({super.key});
@@ -33,63 +35,65 @@ class _ReferralSourceViewState extends State<ReferralSourceView> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: const Color.fromARGB(255, 252, 240, 193),
-      body: Padding(
-        padding: EdgeInsets.symmetric(
-          horizontal: 24.0,
-          vertical: context.screenHeight * 0.05,
-        ),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Text(
-              'Comment as-tu découvert Takali ?',
-              style: context.displayLarge.copyWith(
-                color: AppColors.secondary,
-                height: 1.2,
-              ),
-            ),
-            const SizedBox(height: 30),
-
-            // Conteneur des options
-            Container(
-              padding: const EdgeInsets.all(16),
-              decoration: BoxDecoration(
-                color: Colors.white,
-                borderRadius: BorderRadius.circular(12),
-              ),
-              child: Column(
-                children: _options.map((option) {
-                  return _buildCheckboxOption(option);
-                }).toList(),
-              ),
-            ),
-
-            const SizedBox(height: 30),
-
-            // Bouton de validation
-            SizedBox(
-              width: double.infinity,
-              child: ElevatedButton(
-                style: ElevatedButton.styleFrom(
-                  padding: const EdgeInsets.symmetric(vertical: 16),
-                  backgroundColor: AppColors.primary,
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(12),
-                  ),
-                ),
-                onPressed: _submitSelection,
-                child: Text(
-                  'Valider',
-                  style: context.bodyMedium.copyWith(
-                    color: AppColors.secondary,
-                    fontWeight: FontWeight.bold,
-                  ),
+    return BaseView<ReferralSourceViewModel>(
+      builder: (context, model, _) => Scaffold(
+        backgroundColor: const Color.fromARGB(255, 252, 240, 193),
+        body: Padding(
+          padding: EdgeInsets.symmetric(
+            horizontal: 24.0,
+            vertical: context.screenHeight * 0.05,
+          ),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text(
+                'Comment as-tu découvert Takali ?',
+                style: context.displayLarge.copyWith(
+                  color: AppColors.secondary,
+                  height: 1.2,
                 ),
               ),
-            ),
-          ],
+              const SizedBox(height: 30),
+      
+              // Conteneur des options
+              Container(
+                padding: const EdgeInsets.all(16),
+                decoration: BoxDecoration(
+                  color: Colors.white,
+                  borderRadius: BorderRadius.circular(12),
+                ),
+                child: Column(
+                  children: _options.map((option) {
+                    return _buildCheckboxOption(option);
+                  }).toList(),
+                ),
+              ),
+      
+              const SizedBox(height: 30),
+      
+              // Bouton de validation
+              SizedBox(
+                width: double.infinity,
+                child: ElevatedButton(
+                  style: ElevatedButton.styleFrom(
+                    padding: const EdgeInsets.symmetric(vertical: 16),
+                    backgroundColor: AppColors.primary,
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(12),
+                    ),
+                  ),
+                  onPressed: () => _submitSelection(model),
+                  child: Text(
+                    'Valider',
+                    style: context.bodyMedium.copyWith(
+                      color: AppColors.secondary,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                ),
+              ),
+            ],
+          ),
         ),
       ),
     );
@@ -179,7 +183,7 @@ class _ReferralSourceViewState extends State<ReferralSourceView> {
     );
   }
 
-  void _submitSelection() {
+  void _submitSelection(ReferralSourceViewModel model) {
     final selectedSources = _selectedOptions.entries
         .where((entry) => entry.value)
         .map((entry) => entry.key)
@@ -190,7 +194,8 @@ class _ReferralSourceViewState extends State<ReferralSourceView> {
       selectedSources.add('Autre: $_otherSource');
     }
 
-    print('Sources sélectionnées : $selectedSources');
+    debugPrint('Sources sélectionnées : $selectedSources');
+    model.saveReferralSources(selectedSources);
     Navigator.pushReplacementNamed(context, RoutePaths.matchPreference);
   }
 }
