@@ -6,6 +6,7 @@ import 'package:takali/services/auth_service.dart';
 import 'package:takali/services/local_storage_service.dart';
 import 'package:takali/services/user_service.dart';
 import 'package:takali/viewmodels/login_viewmodel.dart';
+import 'package:takali/viewmodels/otp_viewmodel.dart';
 
 GetIt locator = GetIt.instance;
 
@@ -35,6 +36,7 @@ void registerServices() {
 
 void registerViewModels() {
   locator.registerFactory<LoginViewModel>(() => LoginViewModel());
+  locator.registerFactory<OtpViewModel>(() => OtpViewModel());
 }
 
 void registerProviders() {

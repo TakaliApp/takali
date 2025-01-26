@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:takali/viewmodels/otp_viewmodel.dart';
 import 'package:takali/views/login/login_view.dart';
+import 'package:takali/views/otp/otp_view.dart';
 
 import 'constants/routes.dart';
 
@@ -16,6 +18,8 @@ class AppRouter {
     switch (settings.name) {
       case RoutePaths.login:
         return MaterialPageRoute(builder: (_) => const LoginView());
+      case RoutePaths.verification:
+        return MaterialPageRoute(builder: (_) => const OtpVerificationPage());
       default:
         return MaterialPageRoute(builder: (_) => Container());
     }

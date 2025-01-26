@@ -37,7 +37,7 @@ class _LoginViewState extends State<LoginView> {
               SizedBox(height: context.screenHeight * 0.1),
               // Titre
               Text(
-                'Clique.\nDiscute\nTrouve ta vibe',
+                'Clique.\nDiscute\nTrouve ta vibe !',
                 textAlign: TextAlign.center,
                 style: context.displayLarge.copyWith(
                   color: AppColors.secondary,
