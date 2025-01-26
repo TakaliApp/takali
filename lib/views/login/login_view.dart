@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
-import 'package:takali/helpers/extensions/media_query.dart';
-import 'package:takali/themes/colors.dart';
 import 'package:takali/themes/sizes.dart';
+import 'package:takali/themes/colors.dart';
 import 'package:takali/themes/styles.dart';
-import 'package:takali/helpers/extensions/textstyle.dart';
-import 'package:takali/viewmodels/login_viewmodel.dart';
 import 'package:takali/views/base.view.dart';
+import 'package:google_fonts/google_fonts.dart';
+import 'package:takali/viewmodels/login_viewmodel.dart';
+import 'package:takali/helpers/extensions/textstyle.dart';
+import 'package:takali/helpers/extensions/media_query.dart';
 
 class LoginView extends StatefulWidget {
   const LoginView({super.key});
