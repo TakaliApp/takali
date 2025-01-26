@@ -7,14 +7,14 @@ import 'package:takali/views/base.view.dart';
 import 'package:takali/views/otp/widgets/otp_digit_field_widget.dart';
 import 'package:takali/views/otp/widgets/resend_code_widget.dart';
 
-class OtpVerificationPage extends StatefulWidget {
-  const OtpVerificationPage({super.key});
+class OtpVerificationView extends StatefulWidget {
+  const OtpVerificationView({super.key});
 
   @override
-  State<OtpVerificationPage> createState() => _OtpVerificationPageState();
+  State<OtpVerificationView> createState() => _OtpVerificationViewState();
 }
 
-class _OtpVerificationPageState extends State<OtpVerificationPage> {
+class _OtpVerificationViewState extends State<OtpVerificationView> {
   final List<TextEditingController> _otpControllers = List.generate(6, (index) => TextEditingController());
   final List<FocusNode> _focusNodes = List.generate(6, (index) => FocusNode());
 

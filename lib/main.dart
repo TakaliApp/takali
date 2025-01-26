@@ -37,7 +37,7 @@ class Takali extends StatelessWidget {
         return MaterialApp(
           debugShowCheckedModeBanner: false,
           title: AppStrings.appName,
-          initialRoute: RoutePaths.verification,
+          initialRoute: RoutePaths.profile,
           onGenerateRoute: (settings) => AppRouter.generateRoute(settings),
           navigatorKey: context.read<AuthProvider>().navigatorkey,
         );

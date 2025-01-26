@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:takali/viewmodels/otp_viewmodel.dart';
 import 'package:takali/views/login/login_view.dart';
 import 'package:takali/views/otp/otp_view.dart';
+import 'package:takali/views/user_infos/user_infos_view.dart';
 
 import 'constants/routes.dart';
 
@@ -19,7 +20,9 @@ class AppRouter {
       case RoutePaths.login:
         return MaterialPageRoute(builder: (_) => const LoginView());
       case RoutePaths.verification:
-        return MaterialPageRoute(builder: (_) => const OtpVerificationPage());
+        return MaterialPageRoute(builder: (_) => const OtpVerificationView());
+      case RoutePaths.profile:
+        return MaterialPageRoute(builder: (_) => const UserInfoView());
       default:
         return MaterialPageRoute(builder: (_) => Container());
     }
