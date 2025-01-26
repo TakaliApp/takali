@@ -40,7 +40,13 @@ class OtpDigitField extends StatelessWidget {
             ),
           ),
         ),
-        onChanged: onChanged,
+        onChanged: (value) {
+          if (value.length == 1) {
+            onChanged(value);
+          } else if (value.isEmpty) {
+            onChanged('');
+          }
+        },
       ),
     );
   }

@@ -1,0 +1,25 @@
+{
+    "flutter": {
+        "platforms": {
+            "android": {
+                "default": {
+                    "projectId": "takaliapp",
+                    "appId": "1:87708129049:android:267651ccda11a6ef5c5788",
+                    "fileOutput": "android/app/google-services.json"
+                }
+            },
+            "dart": {
+                "lib/firebase_options.dart": {
+                    "projectId": "takaliapp",
+                    "configurations": {
+                        "android": "1:87708129049:android:267651ccda11a6ef5c5788",
+                        "ios": "1:87708129049:ios:92af4be3475624ce5c5788",
+                        "macos": "1:87708129049:ios:92af4be3475624ce5c5788",
+                        "web": "1:87708129049:web:139518f2ee0e896d5c5788",
+                        "windows": "1:87708129049:web:d3f10418f4ac917e5c5788"
+                    }
+                }
+            }
+        }
+    }
+}

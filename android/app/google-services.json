@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "87708129049",
+    "project_id": "takaliapp",
+    "storage_bucket": "takaliapp.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:87708129049:android:267651ccda11a6ef5c5788",
+        "android_client_info": {
+          "package_name": "com.example.takali"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA3bIurj023NuSdMq8sx749n9p07U3_mLw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

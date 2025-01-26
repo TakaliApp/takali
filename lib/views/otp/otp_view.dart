@@ -9,7 +9,10 @@ import 'package:takali/views/otp/widgets/otp_digit_field_widget.dart';
 import 'package:takali/views/otp/widgets/resend_code_widget.dart';
 
 class OtpVerificationView extends StatefulWidget {
-  const OtpVerificationView({super.key});
+
+  OtpVerificationView({
+    super.key,
+  });
 
   @override
   State<OtpVerificationView> createState() => _OtpVerificationViewState();
@@ -18,27 +21,42 @@ class OtpVerificationView extends StatefulWidget {
 class _OtpVerificationViewState extends State<OtpVerificationView> {
   final List<TextEditingController> _otpControllers = List.generate(6, (index) => TextEditingController());
   final List<FocusNode> _focusNodes = List.generate(6, (index) => FocusNode());
+  late String _verificationId;
 
-  void _checkOtpCompletion() {
-    bool isComplete = _otpControllers.every((controller) => controller.text.isNotEmpty);
-    if (isComplete) {
-      Navigator.pushNamed(context, RoutePaths.profile);
+  @override
+  void didChangeDependencies() {
+    super.didChangeDependencies();
+
+    final args = ModalRoute.of(context)?.settings.arguments;
+  
+    if (args == null || args is! String) {
+      WidgetsBinding.instance.addPostFrameCallback((_) {
+        Navigator.pop(context);
+        ScaffoldMessenger.of(context).showSnackBar(
+          const SnackBar(content: Text('Erreur de vérification')),
+        );
+      });
+      return;
     }
+    _verificationId = args;
   }
+
+  // void _checkOtpCompletion() {
+  //   bool isComplete = _otpControllers.every((controller) => controller.text.isNotEmpty);
+  //   if (isComplete) {
+  //     Navigator.pushNamed(context, RoutePaths.profile);
+  //   }
+  // }
 
   @override
   Widget build(BuildContext context) {
     return BaseView<OtpViewModel>(
       onModelReady: (model) {
         model.initializeTimer();
-        for (var controller in _otpControllers) {
-          controller.addListener(_checkOtpCompletion);
-        } 
       },
       onDispose: (model) {
         model.destroyTimer();
         for (var controller in _otpControllers) {
-          controller.removeListener(_checkOtpCompletion);
           controller.dispose();
         }
         for (var focusNode in _focusNodes) {
@@ -68,7 +86,13 @@ class _OtpVerificationViewState extends State<OtpVerificationView> {
                   return OtpDigitField(
                     controller: _otpControllers[index],
                     focusNode: _focusNodes[index],
-                    onChanged: (value) => model.handleOtpInput(index, value, _focusNodes),
+                    onChanged: (value) => model.handleOtpInput(
+                      index,
+                      value,
+                      _focusNodes,
+                      _verificationId,
+                      context
+                    ),
                   );
                 }),
               ),

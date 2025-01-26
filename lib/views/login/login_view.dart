@@ -134,10 +134,7 @@ class _LoginViewState extends State<LoginView> {
                   ),
                   // onPressed: () => model.login(_selectedCountry + _phoneController.text),
                   onPressed: () => {
-                    Navigator.pushReplacementNamed(
-                      context,
-                      RoutePaths.verification
-                    )
+                    model.login(context, _selectedCountry + _phoneController.text)
                   },
                   child: Text(
                     'Continuer !',
