@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:takali/viewmodels/otp_viewmodel.dart';
+import 'package:takali/views/home/home_view.dart';
 import 'package:takali/views/login/login_view.dart';
 import 'package:takali/views/match_preferences/match_preferences_view.dart';
 import 'package:takali/views/otp/otp_view.dart';
@@ -29,6 +30,8 @@ class AppRouter {
         return MaterialPageRoute(builder: (_) => const ReferralSourceView());
       case RoutePaths.matchPreference:
         return MaterialPageRoute(builder: (_) => const MatchPreferencesView());
+      case RoutePaths.home:
+        return MaterialPageRoute(builder: (_) => const HomeView());
       default:
         return MaterialPageRoute(builder: (_) => Container());
     }

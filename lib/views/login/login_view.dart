@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:takali/constants/routes.dart';
 import 'package:takali/themes/sizes.dart';
 import 'package:takali/themes/colors.dart';
 import 'package:takali/themes/styles.dart';
@@ -132,7 +133,12 @@ class _LoginViewState extends State<LoginView> {
                     ),
                   ),
                   // onPressed: () => model.login(_selectedCountry + _phoneController.text),
-                  onPressed: () => {},
+                  onPressed: () => {
+                    Navigator.pushReplacementNamed(
+                      context,
+                      RoutePaths.verification
+                    )
+                  },
                   child: Text(
                     'Continuer !',
                     style: context.bodyLarge.copyWith(

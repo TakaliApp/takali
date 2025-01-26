@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:takali/constants/routes.dart';
 import 'package:takali/viewmodels/base.viewmodel.dart';
 
 class MatchPreferencesViewModel extends BaseViewModel {
@@ -17,10 +18,10 @@ class MatchPreferencesViewModel extends BaseViewModel {
     notifyListeners();
   }
 
-  void submitSelection() {
+  void submitSelection(BuildContext context) {
     if (_selectedOption != null) {
       print('Option sélectionnée : $_selectedOption');
-      // Ajoutez ici la logique pour soumettre la sélection
+      Navigator.pushReplacementNamed(context, RoutePaths.home);
     }
   }
 }

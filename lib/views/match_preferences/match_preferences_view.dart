@@ -61,7 +61,7 @@ class _MatchPreferencesViewState extends State<MatchPreferencesView> {
                       borderRadius: BorderRadius.circular(12),
                     ),
                   ),
-                  onPressed: model.selectedOption != null ? model.submitSelection : null,
+                  onPressed: model.selectedOption != null ? () => model.submitSelection(context) : null,
                   child: Text(
                     'Continuer',
                     style: context.bodyMedium.copyWith(

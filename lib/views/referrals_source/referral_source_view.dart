@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:takali/constants/routes.dart';
 import 'package:takali/themes/colors.dart';
 import 'package:takali/helpers/extensions/textstyle.dart';
 import 'package:takali/helpers/extensions/media_query.dart';
@@ -190,6 +191,6 @@ class _ReferralSourceViewState extends State<ReferralSourceView> {
     }
 
     print('Sources sélectionnées : $selectedSources');
-    // Ajoutez ici la logique pour soumettre les données
+    Navigator.pushReplacementNamed(context, RoutePaths.matchPreference);
   }
 }

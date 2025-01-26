@@ -191,7 +191,7 @@ class _UserInfoViewState extends State<UserInfoView> {
     if (_formKey.currentState!.validate()) {
       _formKey.currentState!.save();
       // Soumission des données
-      model.submitUserInfo();
+      model.submitUserInfo(context);
     }
   }
 }

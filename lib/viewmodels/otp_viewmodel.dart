@@ -41,4 +41,5 @@ class OtpViewModel extends BaseViewModel {
       focusNodes[index + 1].requestFocus();
     }
   }
+
 }

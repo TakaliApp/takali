@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:takali/constants/routes.dart';
 import 'package:takali/viewmodels/base.viewmodel.dart';
 
 class UserInfoViewModel extends BaseViewModel {
@@ -8,8 +9,7 @@ class UserInfoViewModel extends BaseViewModel {
   String preferredGender = '';
   String location = '';
 
-  void submitUserInfo() {
-    // Implémentez la logique de soumission ici
+  void submitUserInfo(BuildContext context) {
     print('''
       Informations soumises :
       Prénom: $firstName
@@ -18,5 +18,7 @@ class UserInfoViewModel extends BaseViewModel {
       Préférence: $preferredGender
       Localisation: $location
     ''');
+
+    Navigator.pushReplacementNamed(context, RoutePaths.referralSource);
   }
 }
