@@ -23,7 +23,7 @@ class AppRouter {
       case RoutePaths.login:
         return MaterialPageRoute(builder: (_) => const LoginView());
       case RoutePaths.verification:
-        return MaterialPageRoute(builder: (_) => const OtpVerificationView());
+        return MaterialPageRoute(builder: (_) => OtpVerificationView(), settings: settings);
       case RoutePaths.profile:
         return MaterialPageRoute(builder: (_) => const UserInfoView());
       case RoutePaths.referralSource:
