@@ -9,4 +9,5 @@ class RoutePaths {
   static const String referralSource  = '/referalSource';
   static const String genderPreference = '/genderPreference';
   static const String home = '/home';
+  static const String matchPreference = '/matchPreference';
 }

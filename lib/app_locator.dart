@@ -6,6 +6,7 @@ import 'package:takali/services/auth_service.dart';
 import 'package:takali/services/local_storage_service.dart';
 import 'package:takali/services/user_service.dart';
 import 'package:takali/viewmodels/login_viewmodel.dart';
+import 'package:takali/viewmodels/match_preferences_viewmodel.dart';
 import 'package:takali/viewmodels/otp_viewmodel.dart';
 import 'package:takali/viewmodels/user_infos_viewmodel.dart';
 
@@ -39,6 +40,7 @@ void registerViewModels() {
   locator.registerFactory<LoginViewModel>(() => LoginViewModel());
   locator.registerFactory<OtpViewModel>(() => OtpViewModel());
   locator.registerFactory<UserInfoViewModel>(() => UserInfoViewModel());
+  locator.registerFactory<MatchPreferencesViewModel>(() => MatchPreferencesViewModel());
 }
 
 void registerProviders() {
