@@ -1,16 +1,16 @@
 import 'package:flutter/material.dart';
-import 'package:takali/constants/routes.dart';
-import 'package:takali/helpers/extensions/media_query.dart';
-import 'package:takali/helpers/extensions/textstyle.dart';
 import 'package:takali/themes/colors.dart';
-import 'package:takali/viewmodels/otp_viewmodel.dart';
 import 'package:takali/views/base.view.dart';
-import 'package:takali/views/otp/widgets/otp_digit_field_widget.dart';
+import 'package:takali/constants/routes.dart';
+import 'package:takali/viewmodels/otp_viewmodel.dart';
+import 'package:takali/helpers/extensions/textstyle.dart';
+import 'package:takali/helpers/extensions/media_query.dart';
 import 'package:takali/views/otp/widgets/resend_code_widget.dart';
+import 'package:takali/views/otp/widgets/otp_digit_field_widget.dart';
 
 class OtpVerificationView extends StatefulWidget {
 
-  OtpVerificationView({
+  const OtpVerificationView({
     super.key,
   });
 

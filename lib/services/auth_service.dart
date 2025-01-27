@@ -1,13 +1,10 @@
-
 import 'package:takali/app_locator.dart';
-import 'package:takali/constants/api.dart';
 import 'package:takali/constants/enums.dart';
 import 'package:takali/constants/strings.dart';
-import 'package:takali/models/user_model.dart';
-import 'package:takali/services/api/api_service.dart';
 import 'package:takali/services/base.service.dart';
-import 'package:takali/services/local_storage_service.dart';
 import 'package:takali/services/user_service.dart';
+import 'package:takali/services/local_storage_service.dart';
+
 
 class AuthService extends BaseService {
   final LocalStorageService _localStorage;

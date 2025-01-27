@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:takali/helpers/extensions/textstyle.dart';
 import 'package:takali/themes/colors.dart';
-import 'package:takali/views/otp/otp_view.dart';
+import 'package:takali/helpers/extensions/textstyle.dart';
 
 class ResendCodeSection extends StatelessWidget {
   final int countdown;
