@@ -1,10 +1,9 @@
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:takali/constants/enums.dart';
 import 'package:takali/constants/routes.dart';
-import 'package:takali/views/otp/otp_view.dart';
-
 import '../../viewmodels/base.viewmodel.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+
 
 class LoginViewModel extends BaseViewModel {
   final FirebaseAuth _auth = FirebaseAuth.instance;
