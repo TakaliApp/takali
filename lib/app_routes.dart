@@ -1,14 +1,13 @@
+import 'constants/routes.dart';
 import 'package:flutter/material.dart';
-import 'package:takali/viewmodels/otp_viewmodel.dart';
+import 'package:takali/views/otp/otp_view.dart';
 import 'package:takali/views/home/home_view.dart';
 import 'package:takali/views/login/login_view.dart';
 import 'package:takali/views/match_preferences/match_preferences_view.dart';
-import 'package:takali/views/otp/otp_view.dart';
 import 'package:takali/views/photo_upload/photo_upload_view.dart';
 import 'package:takali/views/referrals_source/referral_source_view.dart';
 import 'package:takali/views/user_infos/user_infos_view.dart';
 
-import 'constants/routes.dart';
 
 /// AppRouter is the base class responsible for handling route navigation within the app.
 /// It provides a method to generate different routes based on the provided [RouteSettings].

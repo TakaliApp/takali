@@ -1,17 +1,17 @@
 import 'package:cloudinary_flutter/cloudinary_context.dart';
 import 'package:cloudinary_flutter/cloudinary_object.dart';
-import 'package:firebase_core/firebase_core.dart';
+import 'firebase_options.dart';
 import 'package:flutter/material.dart';
-import 'package:hive_flutter/hive_flutter.dart';
 import 'package:provider/provider.dart';
+import 'package:takali/app_routes.dart';
 import 'package:takali/app_locator.dart';
 import 'package:takali/app_providers.dart';
-import 'package:takali/app_routes.dart';
 import 'package:takali/constants/routes.dart';
 import 'package:takali/constants/strings.dart';
 import 'package:takali/models/user_model.dart';
+import 'package:hive_flutter/hive_flutter.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:takali/providers/auth_provider.dart';
-import 'firebase_options.dart';
 
 Future globalInitializer() async {
   WidgetsFlutterBinding.ensureInitialized();
