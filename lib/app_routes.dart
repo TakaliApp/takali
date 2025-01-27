@@ -4,6 +4,7 @@ import 'package:takali/views/home/home_view.dart';
 import 'package:takali/views/login/login_view.dart';
 import 'package:takali/views/match_preferences/match_preferences_view.dart';
 import 'package:takali/views/otp/otp_view.dart';
+import 'package:takali/views/photo_upload/photo_upload_view.dart';
 import 'package:takali/views/referrals_source/referral_source_view.dart';
 import 'package:takali/views/user_infos/user_infos_view.dart';
 
@@ -32,6 +33,8 @@ class AppRouter {
         return MaterialPageRoute(builder: (_) => const MatchPreferencesView());
       case RoutePaths.home:
         return MaterialPageRoute(builder: (_) => const HomeView());
+      case RoutePaths.photoUpload:
+        return MaterialPageRoute(builder: (_) => const PhotoUploadView());
       default:
         return MaterialPageRoute(builder: (_) => Container());
     }
