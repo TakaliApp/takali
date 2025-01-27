@@ -60,7 +60,8 @@ class _PhotoUploadViewState extends State<PhotoUploadView> {
                     itemBuilder: (context, index) {
                       final hasPhoto = index < model.photos.length;
                       final isUploading = model.currentUploadIndex == index;
-                    
+
+                      debugPrint(hasPhoto ? model.photos[index] : null);
                       return _PhotoCard(
                         image: hasPhoto ? model.photos[index] : null,
                         isLoading: isUploading,
@@ -128,14 +129,11 @@ class _PhotoCard extends StatelessWidget {
           if (image != null)
             ClipRRect(
               borderRadius: BorderRadius.circular(20),
-              child: ImageFiltered(
-                imageFilter: ImageFilter.blur(sigmaX: 2, sigmaY: 2),
-                child: Image.network(
-                  image!,
-                  fit: BoxFit.cover,
-                  width: double.infinity,
-                  height: double.infinity,
-                ),
+              child: Image.network(
+                image!,
+                fit: BoxFit.cover,
+                width: double.infinity,
+                height: double.infinity,
               ),
             ),
           Container(
