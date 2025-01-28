@@ -30,7 +30,8 @@ class PhotoUploadViewModel extends BaseViewModel {
 
       if (pickedFile != null) {
         final File imageFile = File(pickedFile.path);
-        final String downloadUrl = await _uploadImage(imageFile);
+        final File compressedImage = await _compressImage(imageFile);
+        final String downloadUrl = await _uploadImage(compressedImage);
         
         photos.add(downloadUrl);
         notifyListeners();
@@ -41,6 +42,15 @@ class PhotoUploadViewModel extends BaseViewModel {
       currentUploadIndex = null;
       setState(ViewModelState.idle);
     }
+  }
+
+  Future<File> _compressImage(File file) async {
+    final result = await FlutterImageCompress.compressWithFile(
+      file.absolute.path,
+      quality: 70,
+      format: CompressFormat.webp,
+    );
+    return File(file.path)..writeAsBytesSync(result!);
   }
 
   bool get isUploading => (currentUploadIndex != null);

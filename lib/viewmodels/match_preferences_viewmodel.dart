@@ -29,7 +29,7 @@ class MatchPreferencesViewModel extends BaseViewModel {
       await _firestore.collection('users').doc(user.uid).update({
         'lookingFor': _selectedOption,
       });
-      Navigator.pushReplacementNamed(context, RoutePaths.home);
+      Navigator.pushReplacementNamed(context, RoutePaths.photoUpload);
     }
   }
 }

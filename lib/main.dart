@@ -36,7 +36,7 @@ class Takali extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    debugInvertOversizedImages = true;
+    // debugInvertOversizedImages = true;
 
     return MultiProvider(
       providers: AppProviders.providers,
@@ -44,7 +44,7 @@ class Takali extends StatelessWidget {
         return MaterialApp(
           debugShowCheckedModeBanner: false,
           title: AppStrings.appName,
-          initialRoute: RoutePaths.photoUpload,
+          initialRoute: RoutePaths.login,
           onGenerateRoute: (settings) => AppRouter.generateRoute(settings),
           navigatorKey: context.read<AuthProvider>().navigatorkey,
         );

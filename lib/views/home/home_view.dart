@@ -17,12 +17,6 @@ class _HomeViewState extends State<HomeView> {
   int currentIndex = 0;
 
   @override
-  void dispose() {
-    controller.dispose();
-    super.dispose();
-  }
-
-  @override
   Widget build(BuildContext context) {
     return BaseView<HomeViewModel>(
       onModelReady: (model) async {
@@ -31,6 +25,7 @@ class _HomeViewState extends State<HomeView> {
           model.matchProfiles = fetchedUsers;
         });
       },
+      onDispose: (model) => controller.dispose(),
       builder: (context, model, _) => Scaffold(
         backgroundColor: const Color.fromARGB(255, 252, 240, 193),
         body: model.state == ViewModelState.busy

@@ -17,7 +17,6 @@ class _MatchPreferencesViewState extends State<MatchPreferencesView> {
   Widget build(BuildContext context) {
     return BaseView<MatchPreferencesViewModel>(
       onModelReady: (model) {
-        // Initialisation du ViewModel si nécessaire
       },
       builder: (context, model, _) => Scaffold(
         backgroundColor: const Color.fromARGB(255, 252, 240, 193),

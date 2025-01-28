@@ -91,9 +91,9 @@ class _PhotoUploadViewState extends State<PhotoUploadView> {
                       padding: const EdgeInsets.symmetric(vertical: 16),
                     ),
                     onPressed: model.photos.length >= 2 && model.state != ViewModelState.busy
-                      ? () => {} /*model.savePhotosToFirestore().then((_) {
+                      ? () => model.savePhotosToFirestore().then((_) {
                             Navigator.pushNamed(context, RoutePaths.home);
-                          })*/
+                          })
                       : null,
                     child: model.state == ViewModelState.busy
                         ? const CircularProgressIndicator()
