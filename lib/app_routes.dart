@@ -3,10 +3,14 @@ import 'package:flutter/material.dart';
 import 'package:takali/views/otp/otp_view.dart';
 import 'package:takali/views/home/home_view.dart';
 import 'package:takali/views/login/login_view.dart';
-import 'package:takali/views/match_preferences/match_preferences_view.dart';
+import 'package:takali/views/matchs/match_view.dart';
+import 'package:takali/views/mainscreen/mainscreen.dart';
+import 'package:takali/views/user_infos/user_infos_view.dart';
 import 'package:takali/views/photo_upload/photo_upload_view.dart';
 import 'package:takali/views/referrals_source/referral_source_view.dart';
-import 'package:takali/views/user_infos/user_infos_view.dart';
+import 'package:takali/views/match_preferences/match_preferences_view.dart';
+
+
 
 
 /// AppRouter is the base class responsible for handling route navigation within the app.
@@ -23,7 +27,7 @@ class AppRouter {
       case RoutePaths.login:
         return MaterialPageRoute(builder: (_) => const LoginView());
       case RoutePaths.verification:
-        return MaterialPageRoute(builder: (_) => OtpVerificationView(), settings: settings);
+        return MaterialPageRoute(builder: (_) => const OtpVerificationView(), settings: settings);
       case RoutePaths.profile:
         return MaterialPageRoute(builder: (_) => const UserInfoView());
       case RoutePaths.referralSource:
@@ -34,6 +38,10 @@ class AppRouter {
         return MaterialPageRoute(builder: (_) => const HomeView());
       case RoutePaths.photoUpload:
         return MaterialPageRoute(builder: (_) => const PhotoUploadView());
+      case RoutePaths.match:
+        return MaterialPageRoute(builder: (_) => const MatchView());
+      case RoutePaths.mainScreen:
+        return MaterialPageRoute(builder: (_) => const MainView());
       default:
         return MaterialPageRoute(builder: (_) => Container());
     }
