@@ -29,22 +29,23 @@ class MatchProfileModel {
   });
 
   /// Factory method to map Firestore data to MatchProfileModel
-  factory MatchProfileModel.fromMap(Map<String, dynamic> map) {
-    return MatchProfileModel(
-      username: map['username'] ?? '',
-      birthday: _convertTimestamp(map['birthday']),
-      createdAt: _convertTimestamp(map['createdAt']),
-      gender: map['gender'] ?? '',
-      photoUrl: List<String>.from(map['photoUrl'] ?? []),
-      genderPreference: map['gender_preference'] ?? '',
-      isDeletedAccount: map['isDeletedAccount'] ?? false,
-      localization: map['localization'] ?? '',
-      lookingFor: map['lookingFor'] ?? '',
-      phone: map['phone'] ?? '',
-      referralSource: List<String>.from(map['referralSource'] ?? []),
-    );
-  }
-
+ factory MatchProfileModel.fromMap(Map<String, dynamic> map) {
+  return MatchProfileModel(
+    username: map['username'] ?? '',
+    birthday: _convertTimestamp(map['birthday']),
+    createdAt: _convertTimestamp(map['createdAt']),
+    gender: map['gender'] ?? '',
+    photoUrl: (map['photos'] as List<dynamic>?)
+        ?.map((photo) => photo['url'].toString())
+        .toList() ?? [],
+    genderPreference: map['gender_preference'] ?? '',
+    isDeletedAccount: map['isDeletedAccount'] ?? false,
+    localization: map['localization'] ?? '',
+    lookingFor: map['lookingFor'] ?? '',
+    phone: map['phone'] ?? '',
+    referralSource: List<String>.from(map['referralSource'] ?? []),
+  );
+}
   /// Method to convert the DateTime into a readable format
   String getFormattedBirthday() {
     return DateFormat('dd MMMM yyyy').format(birthday);

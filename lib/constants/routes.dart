@@ -11,4 +11,6 @@ class RoutePaths {
   static const String home = '/home';
   static const String matchPreference = '/matchPreference';
   static const String photoUpload = '/photoUpload';
+  static const String match = '/match';
+  static const String mainScreen = '/mainScreen';
 }

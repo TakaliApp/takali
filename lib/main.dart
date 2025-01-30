@@ -1,5 +1,3 @@
-import 'package:cloudinary_flutter/cloudinary_context.dart';
-import 'package:cloudinary_flutter/cloudinary_object.dart';
 import 'firebase_options.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -12,6 +10,8 @@ import 'package:takali/models/user_model.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:takali/providers/auth_provider.dart';
+import 'package:cloudinary_flutter/cloudinary_object.dart';
+import 'package:cloudinary_flutter/cloudinary_context.dart';
 
 Future globalInitializer() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -44,7 +44,7 @@ class Takali extends StatelessWidget {
         return MaterialApp(
           debugShowCheckedModeBanner: false,
           title: AppStrings.appName,
-          initialRoute: RoutePaths.login,
+          initialRoute: RoutePaths.mainScreen,
           onGenerateRoute: (settings) => AppRouter.generateRoute(settings),
           navigatorKey: context.read<AuthProvider>().navigatorkey,
         );

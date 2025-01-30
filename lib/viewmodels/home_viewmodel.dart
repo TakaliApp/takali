@@ -1,11 +1,17 @@
 import 'package:takali/constants/enums.dart';
 import '../../viewmodels/base.viewmodel.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:takali/models/matchprofil_model.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 
 class HomeViewModel extends BaseViewModel {
   List<MatchProfileModel>? users;
-
+  final user = FirebaseAuth.instance.currentUser;
+  String currentUserName = "";
+  String currentUserPhotoUrl = "";
+  String currentUserLocation = "";
+  
+  var allProfiles = [];
   List<MatchProfileModel> matchProfiles = [
     MatchProfileModel(
       username: "john_doe",
@@ -13,7 +19,7 @@ class HomeViewModel extends BaseViewModel {
       createdAt: DateTime(2022, 1, 15),
       gender: "Homme",
       genderPreference: "Femme",
-      isDeletedAccount: false,
+      isDeletedAccount: true,
       localization: "Paris, France",
       lookingFor: "Une relation sérieuse",
       phone: "+33123456789",
@@ -29,7 +35,7 @@ class HomeViewModel extends BaseViewModel {
       createdAt: DateTime(2021, 11, 5),
       gender: "Femme",
       genderPreference: "Homme",
-      isDeletedAccount: false,
+      isDeletedAccount: true,
       localization: "New York, USA",
       lookingFor: "De nouveaux amis",
       phone: "+12125550123",
@@ -45,7 +51,7 @@ class HomeViewModel extends BaseViewModel {
       createdAt: DateTime(2020, 6, 18),
       gender: "Homme",
       genderPreference: "Femme",
-      isDeletedAccount: false,
+      isDeletedAccount: true,
       localization: "Berlin, Allemagne",
       lookingFor: "Une relation sérieuse",
       phone: "+4915123456789",
@@ -61,7 +67,7 @@ class HomeViewModel extends BaseViewModel {
       createdAt: DateTime(2023, 3, 25),
       gender: "Femme",
       genderPreference: "Homme",
-      isDeletedAccount: false,
+      isDeletedAccount: true,
       localization: "Tokyo, Japon",
       lookingFor: "Je ne suis pas sûr(e)",
       phone: "+81312345678",
@@ -77,7 +83,7 @@ class HomeViewModel extends BaseViewModel {
       createdAt: DateTime(2019, 9, 12),
       gender: "Homme",
       genderPreference: "Femme",
-      isDeletedAccount: false,
+      isDeletedAccount: true,
       localization: "Sydney, Australie",
       lookingFor: "De nouveaux amis",
       phone: "+61234567890",
@@ -93,7 +99,7 @@ class HomeViewModel extends BaseViewModel {
       createdAt: DateTime(2022, 5, 10),
       gender: "Femme",
       genderPreference: "Homme",
-      isDeletedAccount: false,
+      isDeletedAccount: true,
       localization: "Toronto, Canada",
       lookingFor: "une relation sérieuse",
       phone: "+14165550123",

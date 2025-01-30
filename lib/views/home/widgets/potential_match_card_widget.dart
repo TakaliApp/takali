@@ -22,8 +22,7 @@ class PotentialMatchCardWidget extends StatefulWidget {
   });
 
   @override
-  State<PotentialMatchCardWidget> createState() =>
-      _PotentialMatchCardWidgetState();
+  State<PotentialMatchCardWidget> createState() => _PotentialMatchCardWidgetState();
 }
 
 class _PotentialMatchCardWidgetState extends State<PotentialMatchCardWidget> {
@@ -32,75 +31,89 @@ class _PotentialMatchCardWidgetState extends State<PotentialMatchCardWidget> {
   @override
   Widget build(BuildContext context) {
     return Card(
-      elevation: 5,
+      elevation: 8,
       shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(20),
+        borderRadius: BorderRadius.circular(24),
       ),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.stretch,
-        children: [
-          Expanded(
-            flex: 4,
-            child: Stack(
-              children: [
-                PageView.builder(
-                  itemCount: widget.photoUrls.length,
-                  onPageChanged: (index) {
-                    setState(() {
-                      _currentIndex = index;
-                    });
-                  },
-                  itemBuilder: (context, index) {
-                    return CachedNetworkImage(
-                      imageUrl: widget.photoUrls[index],
-                      placeholder: (context, url) =>
-                          const Center(child: CircularProgressIndicator()),
-                      errorWidget: (context, url, error) =>
-                          const Icon(Icons.error, size: 40),
-                      imageBuilder: (context, imageProvider) => Container(
-                        decoration: BoxDecoration(
-                          borderRadius: const BorderRadius.only(
-                            topLeft: Radius.circular(20),
-                            topRight: Radius.circular(20),
-                          ),
-                          image: DecorationImage(
-                            image: imageProvider,
-                            fit: BoxFit.cover,
-                          ),
-                        ),
-                      ),
-                    );
-                  },
-                ),
-                Positioned(
-                  top: 10,
-                  left: 0,
-                  right: 0,
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: List.generate(
-                      widget.photoUrls.length,
-                      (index) => Container(
-                        margin: const EdgeInsets.symmetric(horizontal: 4),
-                        width: 8,
-                        height: 8,
-                        decoration: BoxDecoration(
-                          shape: BoxShape.circle,
-                          color: _currentIndex == index
-                              ? Colors.white
-                              : Colors.grey,
-                        ),
-                      ),
+      child: ClipRRect(
+        borderRadius: BorderRadius.circular(24),
+        child: Stack(
+          children: [
+            // Images avec PageView
+            SizedBox(
+              height: MediaQuery.of(context).size.height * 0.65,
+              child: PageView.builder(
+                itemCount: widget.photoUrls.length,
+                onPageChanged: (index) {
+                  setState(() {
+                    _currentIndex = index;
+                  });
+                },
+                itemBuilder: (context, index) {
+                  return CachedNetworkImage(
+                    imageUrl: widget.photoUrls[index],
+                    placeholder: (context, url) => const Center(
+                      child: CircularProgressIndicator(),
+                    ),
+                    errorWidget: (context, url, error) => const Icon(
+                      Icons.error,
+                      size: 40,
+                    ),
+                    fit: BoxFit.cover,
+                  );
+                },
+              ),
+            ),
+
+            // Indicateurs de progression (barres)
+            Positioned(
+              top: 20,
+              left: 0,
+              right: 0,
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: List.generate(
+                  widget.photoUrls.length,
+                  (index) => Container(
+                    margin: const EdgeInsets.symmetric(horizontal: 2),
+                    width: 40,
+                    height: 4,
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(2),
+                      color: _currentIndex == index
+                          ? Colors.white
+                          : Colors.white.withOpacity(0.5),
                     ),
                   ),
                 ),
-              ],
+              ),
             ),
-          ),
-          Expanded(
-            flex: 2,
-            child: Padding(
-              padding: const EdgeInsets.all(16.0),
+
+            // Dégradé noir en bas
+            Positioned(
+              bottom: 0,
+              left: 0,
+              right: 0,
+              child: Container(
+                height: 200,
+                decoration: BoxDecoration(
+                  gradient: LinearGradient(
+                    begin: Alignment.bottomCenter,
+                    end: Alignment.topCenter,
+                    colors: [
+                      Colors.black.withOpacity(0.8),
+                      Colors.transparent,
+                    ],
+                  ),
+                ),
+              ),
+            ),
+
+            // Informations utilisateur
+            Positioned(
+              bottom: 30,
+              left: 20,
+              right: 20,
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
@@ -111,12 +124,14 @@ class _PotentialMatchCardWidgetState extends State<PotentialMatchCardWidget> {
                         style: const TextStyle(
                           fontSize: 28,
                           fontWeight: FontWeight.bold,
+                          color: Colors.white,
                         ),
                       ),
                       Text(
                         "${widget.age}",
                         style: const TextStyle(
                           fontSize: 28,
+                          color: Colors.white,
                         ),
                       ),
                     ],
@@ -124,68 +139,55 @@ class _PotentialMatchCardWidgetState extends State<PotentialMatchCardWidget> {
                   const SizedBox(height: 8),
                   Row(
                     children: [
-                      const Icon(Icons.location_on,
-                          size: 18, color: Colors.grey),
+                      const Icon(
+                        Icons.location_on,
+                        size: 18,
+                        color: Colors.white70,
+                      ),
                       const SizedBox(width: 4),
                       Text(
                         widget.location,
                         style: const TextStyle(
                           fontSize: 16,
-                          color: Colors.grey,
+                          color: Colors.white70,
                         ),
                       ),
                     ],
                   ),
-                  const SizedBox(height: 8),
-                  Text(
-                    "Relation souhaitée :",
-                    style: const TextStyle(
-                      fontSize: 18,
-                      fontWeight: FontWeight.bold,
+                ],
+              ),
+            ),
+
+            // Boutons d'action
+            Positioned(
+              bottom: 20,
+              right: 20,
+              child: Column(
+                children: [
+                  FloatingActionButton(
+                    onPressed: widget.onDislike,
+                    backgroundColor: Colors.white,
+                    child: const Icon(
+                      Icons.close,
+                      color: Colors.grey,
+                      size: 30,
                     ),
                   ),
-                  const SizedBox(height: 4),
-                  Text(
-                    widget.desiredRelation,
-                    style: const TextStyle(fontSize: 16),
+                  const SizedBox(height: 12),
+                  FloatingActionButton(
+                    onPressed: widget.onLike,
+                    backgroundColor: Color(0xFFEC4899), // Rose de notre design
+                    child: const Icon(
+                      Icons.favorite,
+                      color: Colors.white,
+                      size: 30,
+                    ),
                   ),
                 ],
               ),
             ),
-          ),
-
-          Expanded(
-            flex: 1,
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              children: [
-                ElevatedButton(
-                  onPressed: () {
-                    widget.onDislike?.call();
-                  },
-                  style: ElevatedButton.styleFrom(
-                    shape: const CircleBorder(),
-                    padding: const EdgeInsets.all(20),
-                    backgroundColor: Colors.red,
-                  ),
-                  child: const Icon(Icons.close, size: 40, color: Colors.white),
-                ),
-                ElevatedButton(
-                  onPressed: () {
-                    widget.onLike?.call();
-                  },
-                  style: ElevatedButton.styleFrom(
-                    shape: const CircleBorder(),
-                    padding: const EdgeInsets.all(20),
-                    backgroundColor: Colors.green
-                  ),
-                  child:
-                      const Icon(Icons.favorite, size: 40, color: Colors.white),
-                ),
-              ],
-            ),
-          ),
-        ],
+          ], 
+        ),
       ),
     );
   }
