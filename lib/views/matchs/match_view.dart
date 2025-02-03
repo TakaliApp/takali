@@ -106,7 +106,7 @@ class _MatchViewState extends State<MatchView>
           ],
         ),
         backgroundColor: backgroundColor,
-        body: Padding(
+        body: model.matchProfiles.isEmpty ? const Center(child: CircularProgressIndicator()) :   Padding(
           padding: const EdgeInsets.all(16.0),
           child: Column(
             children: [
@@ -199,6 +199,9 @@ class _MatchViewState extends State<MatchView>
                             fullscreenDialog: true,
                           ),
                         );
+                      },
+                      onDislike: () {
+                        model.dislikeMatch(index);
                       },
                     );
                   },

@@ -102,4 +102,9 @@ List<MatchProfileModel> matchProfiles = [
     ),
   ];
 
+  void dislikeMatch(int index) {
+    matchProfiles.removeAt(index);
+    notifyListeners();
+  }
+
 }
