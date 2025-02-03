@@ -65,14 +65,92 @@ class _MatchViewState extends State<MatchView>
     });
   }
 
-  int _calculateAge(DateTime birthDate) {
-    final now = DateTime.now();
-    int age = now.year - birthDate.year;
-    if (now.month < birthDate.month ||
-        (now.month == birthDate.month && now.day < birthDate.day)) {
-      age--;
+  Widget _buildEmptyState() {
+    return Center(
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          Container(
+            padding: const EdgeInsets.all(20),
+            decoration: BoxDecoration(
+              color: Colors.white,
+              shape: BoxShape.circle,
+              boxShadow: [
+                BoxShadow(
+                  color: Colors.black.withOpacity(0.1),
+                  blurRadius: 10,
+                  offset: const Offset(0, 4),
+                ),
+              ],
+            ),
+            child: Icon(
+              Icons.favorite_border,
+              size: 64,
+              color: Colors.pink.shade300,
+            ),
+          ),
+          const SizedBox(height: 24),
+          Text(
+            'Aucun like pour le moment',
+            style: TextStyle(
+              fontSize: 20,
+              fontWeight: FontWeight.bold,
+              color: Colors.grey[800],
+            ),
+          ),
+          const SizedBox(height: 12),
+          Text(
+            'Continuez à explorer pour recevoir des likes !',
+            style: TextStyle(
+              fontSize: 16,
+              color: Colors.grey[600],
+            ),
+            textAlign: TextAlign.center,
+          ),
+        ],
+      ),
+    );
+  }
+
+  Widget _buildContent(MatchViewModel model, int crossAxisCount) {
+    // if (model.isLoading) {
+    //   return const Center(
+    //     child: CircularProgressIndicator(),
+    //   );
+    // }
+
+    if (model.matchProfiles.isEmpty) {
+      return _buildEmptyState();
     }
-    return age;
+
+    return GridView.builder(
+      gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+        crossAxisCount: crossAxisCount,
+        childAspectRatio: 0.7,
+        crossAxisSpacing: 10,
+        mainAxisSpacing: 10,
+      ),
+      itemCount: model.matchProfiles.length,
+      itemBuilder: (context, index) {
+        final profile = model.matchProfiles[index];
+        return MatchCardWidget(
+          name: profile.username,
+          age: (profile.birthday).age,
+          photoUrl: profile.photoUrl!.last,
+          onProfileTap: () {
+            Navigator.of(context, rootNavigator: true).push(
+              MaterialPageRoute(
+                builder: (context) => MatchFullDetailsView(index: index),
+                fullscreenDialog: true,
+              ),
+            );
+          },
+          onDislike: () {
+            model.dislikeMatch(index);
+          },
+        );
+      },
+    );
   }
 
   @override
@@ -106,7 +184,7 @@ class _MatchViewState extends State<MatchView>
           ],
         ),
         backgroundColor: backgroundColor,
-        body: model.matchProfiles.isEmpty ? const Center(child: CircularProgressIndicator()) :   Padding(
+        body: Padding(
           padding: const EdgeInsets.all(16.0),
           child: Column(
             children: [
@@ -150,7 +228,9 @@ class _MatchViewState extends State<MatchView>
                                     border: InputBorder.none,
                                     isDense: true,
                                     contentPadding: EdgeInsets.symmetric(
-                                        horizontal: 20, vertical: 22),
+                                      horizontal: 20,
+                                      vertical: 22,
+                                    ),
                                   ),
                                 ),
                               ),
@@ -177,35 +257,7 @@ class _MatchViewState extends State<MatchView>
               ),
               const SizedBox(height: 20),
               Expanded(
-                child: GridView.builder(
-                  gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                    crossAxisCount: crossAxisCount,
-                    childAspectRatio: 0.7,
-                    crossAxisSpacing: 10,
-                    mainAxisSpacing: 10,
-                  ),
-                  itemCount: model.matchProfiles.length,
-                  itemBuilder: (context, index) {
-                    final profile = model.matchProfiles[index];
-                    return MatchCardWidget(
-                      name: profile.username,
-                      age: (profile.birthday).age,
-                      photoUrl: profile.photoUrl!.last,
-                      onProfileTap: () {
-                        Navigator.of(context, rootNavigator: true).push(
-                          MaterialPageRoute(
-                            builder: (context) =>
-                                MatchFullDetailsView(index: index),
-                            fullscreenDialog: true,
-                          ),
-                        );
-                      },
-                      onDislike: () {
-                        model.dislikeMatch(index);
-                      },
-                    );
-                  },
-                ),
+                child: _buildContent(model, crossAxisCount),
               ),
             ],
           ),

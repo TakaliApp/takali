@@ -2,6 +2,7 @@ import 'package:takali/models/matchprofil_model.dart';
 import 'package:takali/viewmodels/base.viewmodel.dart';
 
 class MatchViewModel extends BaseViewModel {
+bool isLoading = true;
 
 List<MatchProfileModel> matchProfiles = [
     MatchProfileModel(
