@@ -1,14 +1,13 @@
-import 'dart:ui';
-
 import 'package:flutter/material.dart';
-import 'package:takali/constants/enums.dart';
-import 'package:takali/constants/routes.dart';
-import 'package:takali/helpers/extensions/media_query.dart';
-import 'package:takali/helpers/extensions/textstyle.dart';
-import 'package:takali/themes/colors.dart';
 import 'package:takali/themes/sizes.dart';
-import 'package:takali/viewmodels/photo_upload_viewmodel.dart';
+import 'package:takali/themes/colors.dart';
+import 'package:takali/constants/enums.dart';
 import 'package:takali/views/base.view.dart';
+import 'package:takali/constants/routes.dart';
+import 'package:takali/helpers/extensions/textstyle.dart';
+import 'package:takali/helpers/extensions/media_query.dart';
+import 'package:takali/viewmodels/photo_upload_viewmodel.dart';
+
 
 class PhotoUploadView extends StatefulWidget {
   const PhotoUploadView({super.key});

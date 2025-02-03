@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:takali/themes/colors.dart';
 import 'package:takali/constants/enums.dart';
 import 'package:takali/views/base.view.dart';
 import 'package:takali/viewmodels/home_viewmodel.dart';
 import 'package:flutter_card_swiper/flutter_card_swiper.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:cached_network_image/cached_network_image.dart';
+import 'package:takali/helpers/extensions/age_calculator_extension.dart';
 import 'package:takali/views/home/widgets/potential_match_card_widget.dart';
 
 class HomeView extends StatefulWidget {
@@ -18,7 +20,6 @@ class _HomeViewState extends State<HomeView> {
   final CardSwiperController controller = CardSwiperController();
   int currentIndex = 0;
 
-  @override
   @override
   Widget build(BuildContext context) {
     return BaseView<HomeViewModel>(
@@ -70,7 +71,7 @@ class _HomeViewState extends State<HomeView> {
                   model.currentUserLocation,
                   style: const TextStyle(
                     fontSize: 14,
-                    color: Colors.deepPurpleAccent,
+                    color: AppColors.secondary,
                   ),
                 ),
               ],
@@ -101,7 +102,7 @@ class _HomeViewState extends State<HomeView> {
                             onSwipe: _onSwipe,
                             onUndo: _onUndo,
                             numberOfCardsDisplayed: 3,
-                            backCardOffset: const Offset(40, 40),
+                            backCardOffset: const Offset(30, 22),
                             padding: const EdgeInsets.all(24.0),
                             cardBuilder: (context,
                                 index,
@@ -110,8 +111,7 @@ class _HomeViewState extends State<HomeView> {
                               return PotentialMatchCardWidget(
                                 name: model.allProfiles[index].username,
                                 location: model.allProfiles[index].localization,
-                                age: model.yearsOldCalculator(
-                                    model.allProfiles[index].birthday),
+                                age: AgeCalculator(model.allProfiles[index].birthday).age,
                                 desiredRelation:
                                     model.allProfiles[index].lookingFor,
                                 photoUrls: model.allProfiles[index].photoUrl!,

@@ -45,5 +45,14 @@
 	<true/>
 	<key>UIApplicationSupportsIndirectInputEvents</key>
 	<true/>
+	
+	<!-- Autorisations pour url_launcher -->
+	<key>LSApplicationQueriesSchemes</key>
+	<array>
+	    <string>http</string>
+	    <string>https</string>
+	    <string>tel</string>
+	    <string>mailto</string>
+	</array>
 </dict>
 </plist>

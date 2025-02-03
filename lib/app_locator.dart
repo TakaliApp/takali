@@ -3,7 +3,6 @@ import 'package:logger/logger.dart';
 import 'package:takali/services/auth_service.dart';
 import 'package:takali/services/user_service.dart';
 import 'package:takali/providers/auth_provider.dart';
-import 'package:takali/models/matchprofil_model.dart';
 import 'package:takali/services/api/api_service.dart';
 import 'package:takali/viewmodels/otp_viewmodel.dart';
 import 'package:takali/viewmodels/home_viewmodel.dart';

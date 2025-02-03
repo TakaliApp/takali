@@ -58,6 +58,8 @@ dependencies:
   image: ^4.5.2
   exif: ^3.3.0
   font_awesome_flutter: ^10.8.0
+  dot_navigation_bar: ^1.0.2
+  url_launcher: ^6.3.1
 
 dev_dependencies:
   flutter_test:

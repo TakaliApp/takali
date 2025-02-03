@@ -176,7 +176,7 @@ class _PotentialMatchCardWidgetState extends State<PotentialMatchCardWidget> {
                   const SizedBox(height: 12),
                   FloatingActionButton(
                     onPressed: widget.onLike,
-                    backgroundColor: Color(0xFFEC4899), // Rose de notre design
+                    backgroundColor: const Color(0xFFEC4899), // Rose de notre design
                     child: const Icon(
                       Icons.favorite,
                       color: Colors.white,

@@ -1,16 +1,15 @@
 import 'dart:io';
 import 'dart:convert';
-
-import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:exif/exif.dart';
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_image_compress/flutter_image_compress.dart';
-import 'package:image_picker/image_picker.dart';
-import 'package:takali/constants/enums.dart';
 import 'package:http/http.dart' as http;
-
+import 'package:takali/constants/enums.dart';
 import '../../viewmodels/base.viewmodel.dart';
+import 'package:image_picker/image_picker.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:flutter_image_compress/flutter_image_compress.dart';
+
+
 
 class PhotoUploadViewModel extends BaseViewModel {
   final FirebaseFirestore _firestore = FirebaseFirestore.instance;

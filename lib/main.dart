@@ -10,8 +10,6 @@ import 'package:takali/models/user_model.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:takali/providers/auth_provider.dart';
-import 'package:cloudinary_flutter/cloudinary_object.dart';
-import 'package:cloudinary_flutter/cloudinary_context.dart';
 
 Future globalInitializer() async {
   WidgetsFlutterBinding.ensureInitialized();

@@ -1,4 +1,5 @@
 {
   "dart.flutterSdkPath": ".fvm/versions/3.24.5",
-  "java.configuration.updateBuildConfiguration": "interactive"
+  "java.configuration.updateBuildConfiguration": "interactive",
+  "cmake.sourceDirectory": "/Users/deogratiaspatinvoh/Takali/takali/linux"
 }
