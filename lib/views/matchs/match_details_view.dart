@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:takali/views/base.view.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'package:takali/viewmodels/match_viewmodel.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:takali/helpers/extensions/age_calculator_extension.dart';
 
@@ -38,14 +39,13 @@ class _MatchFullDetailsViewState extends State<MatchFullDetailsView> {
       builder: (context, MatchViewModel model, _) {
         final match = model.matchProfiles[widget.index];
         final age = match.birthday.age;
-        
 
         return Scaffold(
           extendBody: true,
           extendBodyBehindAppBar: true,
           body: Stack(
             children: [
-              // Photo Carousel
+              // Photo Carousel (unchanged)
               SizedBox(
                 height: MediaQuery.of(context).size.height,
                 child: PageView.builder(
@@ -71,7 +71,7 @@ class _MatchFullDetailsViewState extends State<MatchFullDetailsView> {
                           ),
                           fit: BoxFit.cover,
                         ),
-                        // Gradient overlay for text visibility
+                        // Gradient overlay (unchanged)
                         Positioned.fill(
                           child: DecoratedBox(
                             decoration: BoxDecoration(
@@ -93,7 +93,7 @@ class _MatchFullDetailsViewState extends State<MatchFullDetailsView> {
                 ),
               ),
 
-              // Back Button
+              // Back Button (unchanged)
               Positioned(
                 top: 40,
                 left: 16,
@@ -109,9 +109,9 @@ class _MatchFullDetailsViewState extends State<MatchFullDetailsView> {
                 ),
               ),
 
-              // Profile Information overlay
+              // Profile Information overlay (unchanged)
               Positioned(
-                bottom: 250,
+                bottom: 180,
                 left: 20,
                 right: 20,
                 child: Column(
@@ -155,11 +155,66 @@ class _MatchFullDetailsViewState extends State<MatchFullDetailsView> {
                       ],
                     ),
                     const SizedBox(height: 16),
+                    
+                    // Looking For section (unchanged)
+                    Container(
+                      padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
+                      decoration: BoxDecoration(
+                        color: Colors.black.withOpacity(0.4),
+                        borderRadius: BorderRadius.circular(8),
+                      ),
+                      child: Row(
+                        mainAxisSize: MainAxisSize.min,
+                        children: [
+                          const Icon(
+                            Icons.favorite,
+                            color: Colors.white,
+                            size: 18,
+                          ),
+                          const SizedBox(width: 8),
+                          Text(
+                            match.lookingFor,
+                            style: const TextStyle(
+                              color: Colors.white,
+                              fontSize: 16,
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                    const SizedBox(height: 8),
+                    
+                    // Phone number (unchanged)
+                    Container(
+                      padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
+                      decoration: BoxDecoration(
+                        color: Colors.black.withOpacity(0.4),
+                        borderRadius: BorderRadius.circular(8),
+                      ),
+                      child: Row(
+                        mainAxisSize: MainAxisSize.min,
+                        children: [
+                          const Icon(
+                            Icons.phone,
+                            color: Colors.white,
+                            size: 18,
+                          ),
+                          const SizedBox(width: 8),
+                          Text(
+                            match.phone,
+                            style: const TextStyle(
+                              color: Colors.white,
+                              fontSize: 16,
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
                   ],
                 ),
               ),
 
-              // Page Indicators
+              // Page Indicators (unchanged)
               Positioned(
                 top: 100,
                 left: 0,
@@ -183,7 +238,7 @@ class _MatchFullDetailsViewState extends State<MatchFullDetailsView> {
                 ),
               ),
 
-              // WhatsApp Button
+              // Updated WhatsApp Button with Icon
               Positioned(
                 bottom: 24,
                 left: 20,
@@ -197,13 +252,24 @@ class _MatchFullDetailsViewState extends State<MatchFullDetailsView> {
                       borderRadius: BorderRadius.circular(12),
                     ),
                   ),
-                  child: const Text(
-                    'Discuter sur WhatsApp',
-                    style: TextStyle(
-                      fontSize: 18,
-                      color: Colors.white,
-                      fontWeight: FontWeight.bold,
-                    ),
+                  child: const Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                       Icon(
+                        FontAwesomeIcons.whatsapp,
+                        color: Colors.white,
+                        size: 24,
+                      ),
+                      const SizedBox(width: 12),
+                      const Text(
+                        'Discuter sur WhatsApp',
+                        style: TextStyle(
+                          fontSize: 18,
+                          color: Colors.white,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                    ],
                   ),
                 ),
               ),

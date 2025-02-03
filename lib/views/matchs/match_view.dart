@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:takali/themes/colors.dart';
 import 'package:takali/views/base.view.dart';
 import 'package:takali/viewmodels/match_viewmodel.dart';
-import 'package:takali/views/matchs/match_fullview_view.dart';
+import 'package:takali/views/matchs/match_details_view.dart';
 import 'package:takali/views/matchs/widgets/match_card_widget.dart';
 import 'package:takali/helpers/extensions/age_calculator_extension.dart';
 
